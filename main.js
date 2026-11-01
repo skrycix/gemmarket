@@ -8,7 +8,7 @@
 /* ---------- Config ---------- */
 const CONFIG = {
   // >>> PUT YOUR REAL BACKEND URL HERE (no trailing slash) <<<
-  API_BASE: 'https://YOUR-BACKEND.example.com/api',
+  API_BASE: 'https://ep-purple-art-b9veohya.apirest.c-7.eu-central-1.aws.neon.tech/neondb/rest/v1',
   // true = built-in in-memory fake server so the game runs without a backend.
   // Data is lost on reload. Set to false once API_BASE points to a real server.
   USE_MOCK: true,
