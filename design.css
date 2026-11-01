@@ -1,0 +1,108 @@
+/* Gemstone Market – design tokens and layout */
+:root{
+  --ink:#080d1c; --navy:#101834; --panel:rgba(20,29,58,.58); --line:rgba(214,168,79,.18);
+  --gold:#d6a84f; --gold-2:#f1d38a; --text:#ebe7dc; --muted:#8c95ad; --bad:#e5736b; --good:#6fd1a0;
+  --common:#9aa4b2; --rare:#4aa3ff; --epic:#b174ff; --mythic:#ff6a8a; --legendary:#ffc247;
+  --serif:'Newsreader',Georgia,serif; --sans:'Manrope',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{
+  font:400 14px/1.5 var(--sans);color:var(--text);
+  background:radial-gradient(900px 500px at 12% -10%,#1d2a5c55,transparent),
+             radial-gradient(700px 500px at 100% 110%,#5b3a1a40,transparent),var(--ink);
+  overflow:hidden;
+}
+.hidden{display:none!important}
+.muted{color:var(--muted)}
+h1,h2,h3{font-family:var(--serif);font-weight:700}
+h2{font-size:20px} h3{font-size:16px}
+
+/* Glass surfaces */
+.glass{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 50px -25px #000}
+
+/* Buttons & inputs */
+.btn{font:600 14px var(--sans);border:1px solid transparent;border-radius:9px;padding:10px 16px;cursor:pointer;color:var(--text);transition:transform .12s,filter .12s,opacity .12s}
+.btn:hover:not(:disabled){filter:brightness(1.1)} .btn:active:not(:disabled){transform:scale(.97)}
+.btn.gold{background:linear-gradient(180deg,var(--gold-2),var(--gold));color:#2a1d05}
+.btn.ghost{background:transparent;border-color:var(--line)}
+.btn.small{padding:7px 12px;font-size:13px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.loading{position:relative;color:transparent!important;pointer-events:none}
+.btn.loading::after{content:"";position:absolute;inset:0;margin:auto;width:16px;height:16px;border-radius:50%;
+  border:2px solid #2a1d05;border-top-color:transparent;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+:focus-visible{outline:2px solid var(--gold-2);outline-offset:2px}
+input,select{font:inherit;color:var(--text);background:#0a1126aa;border:1px solid var(--line);border-radius:8px;padding:9px 11px}
+select option{background:var(--navy)}
+
+/* Auth */
+.auth{min-height:100%;display:grid;place-items:center;padding:20px;overflow:auto}
+.auth-card{width:min(420px,100%);padding:32px}
+.brand{font-size:34px;color:var(--gold-2);margin-bottom:6px}
+.tabs{display:flex;gap:6px;margin:22px 0 16px}
+.tab{flex:1;padding:9px;background:none;border:0;border-bottom:2px solid var(--line);color:var(--muted);font:600 14px var(--sans);cursor:pointer}
+.tab.active{color:var(--gold-2);border-color:var(--gold)}
+.form{display:grid;gap:12px}
+.form label{display:grid;gap:5px;color:var(--muted);font-size:13px}
+
+/* Dashboard grid: strict 2x2 */
+.grid{height:100vh;padding:14px;display:grid;gap:14px;grid-template-columns:1fr 1fr;grid-template-rows:minmax(0,1fr) minmax(0,1fr)}
+.panel{padding:18px;display:flex;flex-direction:column;min-height:0;min-width:0}
+.panel-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+
+/* Profile */
+.stat-big{display:grid;margin-bottom:14px}
+.stat-big strong{font:700 44px/1.1 var(--serif);color:var(--gold-2)}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.stat-row div,.daily div{display:grid}
+.stat-row strong,.daily strong{font-weight:600;font-size:16px}
+.daily{margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border:1px solid var(--line);border-radius:10px}
+
+/* Chart */
+.seg{display:flex;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+.seg button{background:none;border:0;color:var(--muted);padding:6px 11px;font:600 13px var(--sans);cursor:pointer}
+.seg button.active{background:var(--gold);color:#2a1d05}
+.chart-wrap{flex:1;min-height:0;position:relative}
+
+/* Inventory */
+.controls{display:flex;gap:6px}
+.inv{flex:1;min-height:0;overflow:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px;align-content:start;padding-right:4px}
+.empty{grid-column:1/-1;color:var(--muted);padding:24px 0;text-align:center}
+.gem{cursor:pointer;text-align:left;background:#0a112666;border:1px solid var(--tc,var(--line));border-radius:10px;padding:10px;color:var(--text);font:inherit;transition:transform .12s}
+.gem:hover{transform:translateY(-2px)}
+.gem .sw{height:46px;margin:0 auto 8px;width:46px;clip-path:polygon(50% 0,100% 38%,80% 100%,20% 100%,0 38%);background:var(--gc)}
+.gem b{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gem small{color:var(--muted);display:block}
+.gem .w{color:var(--gold-2);font-weight:600}
+
+/* Shop */
+.shop{display:grid;gap:10px;overflow:auto;min-height:0}
+.item{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:10px}
+.item.off{opacity:.5}
+
+/* Modal */
+.modal{position:fixed;inset:0;z-index:20;background:#040712cc;display:grid;place-items:center;padding:16px}
+.modal-card{position:relative;width:min(820px,100%);max-height:94vh;overflow:auto;display:grid;grid-template-columns:1.1fr 1fr;background:rgba(16,24,52,.92)}
+.close{position:absolute;top:10px;right:10px;z-index:2}
+.m-3d{min-height:340px;cursor:grab;touch-action:none} .m-3d:active{cursor:grabbing} .m-3d canvas{display:block;width:100%;height:100%}
+.m-info{padding:26px;display:flex;flex-direction:column;gap:10px}
+.flag{color:var(--gold-2);font-weight:800}
+.stats{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:8px 0 auto}
+.stats dt{color:var(--muted)} .stats dd{font-weight:600;text-align:right}
+
+/* Toasts */
+.toasts{position:fixed;right:16px;bottom:16px;z-index:50;display:grid;gap:8px}
+.toast{padding:11px 15px;border-radius:10px;background:var(--navy);border:1px solid var(--line);border-left:4px solid var(--gold);max-width:320px;animation:in .2s ease-out}
+.toast.error{border-left-color:var(--bad)} .toast.ok{border-left-color:var(--good)}
+@keyframes in{from{opacity:0;transform:translateX(12px)}}
+
+/* Responsive: stack panels on narrow screens */
+@media (max-width:900px){
+  body{overflow:auto}
+  .grid{height:auto;grid-template-columns:1fr;grid-template-rows:none}
+  .panel{min-height:340px} .chart-wrap{min-height:260px}
+  .modal-card{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
